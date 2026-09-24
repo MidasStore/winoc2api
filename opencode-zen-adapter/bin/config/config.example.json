@@ -1,0 +1,47 @@
+{
+  "listen": "127.0.0.1:20132",
+  "server_keys": [
+    "CHANGE-ME-long-random-string"
+  ],
+  "zen_keys": [],
+  "go_keys": [],
+  "anonymous": true,
+  "proxies": [
+    "direct"
+  ],
+  "proxyfile": "",
+  "upstream": {
+    "zen": "https://opencode.ai/zen",
+    "go": "https://opencode.ai/zen/go"
+  },
+  "retry": {
+    "max_attempts": 2,
+    "timeout_seconds": 120
+  },
+  "models": {
+    "refresh_seconds": 300,
+    "protocols": {}
+  },
+  "performance": {
+    "max_idle_conns": 256,
+    "max_idle_conns_per_host": 64,
+    "max_conns_per_host": 0,
+    "idle_conn_timeout_seconds": 120,
+    "connect_timeout_seconds": 5,
+    "failure_cooldown_seconds": 15,
+    "attempt_timeout_seconds": 0
+  },
+  "logging": {
+    "level": "info",
+    "ring_size": 500,
+    "dump_request_bodies": false
+  },
+  "webui": {
+    "enabled": false
+  },
+  "prefer": "zen",
+  "reasoning": {
+    "effort": "high",
+    "effort_by_model": {}
+  }
+}

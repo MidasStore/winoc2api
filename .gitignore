@@ -1,0 +1,31 @@
+# ===================================================================
+#  winoc2api - runtime artifacts
+#  Nothing here should ever reach git history.
+#
+#  NOTE: repo root is THIS folder (the skill folder), while the runtime
+#  lives one level down in opencode-zen-adapter/. Patterns containing a
+#  "/" are anchored to this file's folder, so the bin/ paths below must
+#  carry that prefix or they match nothing at all.
+# ===================================================================
+
+# Gateway binary (~8 MB). Ship via release artifacts, not git history.
+opencode-zen-adapter/bin/opencode2api.exe
+
+# Live config - contains server_keys (a credential).
+# Clone from opencode-zen-adapter/bin/config/config.example.json instead.
+opencode-zen-adapter/bin/config/config-oc2api.json
+
+# Model caches. Written by the gateway as SIBLINGS of the config file,
+# regenerated automatically on every boot. ~70 KB.
+opencode-zen-adapter/bin/config/*.models.*.json
+
+# Runtime logs - regenerated continuously (30 KB+ after minutes).
+# No middle slash, so these match at any depth (opencode-zen-adapter/logs included).
+logs/
+*.log
+
+# --- editor / OS junk ---
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
