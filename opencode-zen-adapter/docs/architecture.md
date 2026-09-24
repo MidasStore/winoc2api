@@ -110,10 +110,23 @@ Fields that matter most when tuning:
 | Method | Path | Auth |
 |---|---|---|
 | `GET` | `/healthz` | none |
-| `GET` | `/v1/models` | `x-api-key` |
-| `POST` | `/v1/chat/completions` | `x-api-key` |
+| `GET` | `/v1/models` | key required |
+| `POST` | `/v1/chat/completions` | key required |
+| `POST` | `/v1/responses` | key required |
+| `POST` | `/v1/messages` | key required |
 
-Streaming (SSE) and non-streaming responses are both supported.
+**Key required** = present `server_keys[0]` as `x-api-key: <key>` *or*
+`Authorization: Bearer <key>` — the two are interchangeable. Omitting or mistyping it returns
+`401 authentication_error` (`invalid local API key`), on every `/v1/*` route including
+`/v1/models`.
+
+`/v1/responses` returns the OpenAI Responses shape (`object: "response"`, `output[]`);
+`/v1/messages` returns the Anthropic shape (`type: "message"`, `content[]`, carrying
+`thinking` blocks). Streaming (SSE, `text/event-stream`) and non-streaming responses are both
+supported on all three inference routes.
+
+Not implemented: `POST /v1/embeddings` returns `404 page not found`, as do file upload and
+image-generation routes.
 
 ## Runtime-generated files
 
