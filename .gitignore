@@ -9,7 +9,7 @@
 # ===================================================================
 
 # Gateway binary (~8 MB). Ship via release artifacts, not git history.
-opencode-zen-adapter/bin/opencode2api.exe
+!opencode-zen-adapter/bin/opencode2api.exe
 
 # Live config - contains server_keys (a credential).
 # Clone from opencode-zen-adapter/bin/config/config.example.json instead.
@@ -21,7 +21,7 @@ opencode-zen-adapter/bin/config/*.models.*.json
 
 # Runtime logs - regenerated continuously (30 KB+ after minutes).
 # No middle slash, so these match at any depth (opencode-zen-adapter/logs included).
-logs/
+!logs/
 *.log
 
 # --- editor / OS junk ---
